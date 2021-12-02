@@ -29,9 +29,10 @@
 4. Provide a sample architecture diagram of your system (you can use PPT with squares and circles to demonstrate a simplified flow of you system)
 
 
-![Group One Project Flow.png](Group One Project Flow.png)
+![Group_One_Project_Flow.png](Group_One_Project_Flow.png)
+![img.png](img.png)
 
-6. Describe the team approach to the project work: how are you planning to distribute the workload, how are you managing your code, how are you planning to test your system?
+5. Describe the team approach to the project work: how are you planning to distribute the workload, how are you managing your code, how are you planning to test your system?
 
     - We are using slack, trello and Google Drive to manage our workload and keep everyone up to date on progress and our ideas.
     - We distribute the workload between us according to preference and time capacity each week.
