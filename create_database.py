@@ -1,6 +1,10 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
 
+"""
+This is a script you run at the beginning to create the SQL Database at the beginning
+"""
+
 
 def create_database():
     my_db = mysql.connector.connect(
