@@ -31,13 +31,12 @@ def create_question_bank():
     for q in question_numbers:
         question = Question()
         question.populate_question(q)
-        question.print_question()
+        # question.print_question()
         question_bank.append(question)
     return question_bank
 
 if __name__ == "__main__":
     question_bank = create_question_bank()
-    print(question_bank[0].choices)
     quiz = SnakeBrain(question_bank)
 
     quiz_ui = QuizInterface(quiz)

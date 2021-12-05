@@ -125,11 +125,11 @@ def get_question_count():
 if __name__ == "__main__":
 
     _connect_to_db("Nano_Degree_Game_1")
-    print(get_question(1))
-    print("*********")
-    print(get_correct_answer(1))
-    print("*********")
-    print(get_incorrect_answers(1))
+    # print(get_question(1))
+    # print("*********")
+    # print(get_correct_answer(1))
+    # print("*********")
+    # print(get_incorrect_answers(1))
     # get_question_count()
 
 
