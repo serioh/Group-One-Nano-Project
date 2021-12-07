@@ -22,7 +22,9 @@ import random
 from question import Question
 from snake_brain import SnakeBrain
 from snake_charmer_ui import QuizInterface
+from login import Login
 from sql_python_connection_rz import get_question_count
+from tkinter import *
 
 def create_question_bank():
     question_count = get_question_count()
@@ -35,11 +37,24 @@ def create_question_bank():
         question_bank.append(question)
     return question_bank
 
-if __name__ == "__main__":
+
+def run():
     question_bank = create_question_bank()
     quiz = SnakeBrain(question_bank)
-
     quiz_ui = QuizInterface(quiz)
-
     print("You've completed the quiz")
     print(f"Your final score was: {quiz.score}/{quiz.question_no}")
+
+    return quiz_ui
+
+if __name__ == "__main__":
+    # question_bank = create_question_bank()
+    # quiz = SnakeBrain(question_bank)
+    #
+    # quiz_ui = QuizInterface(quiz)
+    #
+    # print("You've completed the quiz")
+    # print(f"Your final score was: {quiz.score}/{quiz.question_no}")
+    # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
+    # any hint to solve this
+    Login()
