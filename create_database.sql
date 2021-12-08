@@ -126,3 +126,10 @@ chilli
 Complete."'),
 (26, '12.0', 'Syntax Error', '0'),
 (27, '6', '60', 'Syntax Error');
+
+CREATE TABLE register(
+f_name CHAR(50),
+l_name CHAR(50),
+email VARCHAR(100),
+password VARCHAR(20) ,
+confirm_password VARCHAR(20));
