@@ -73,7 +73,7 @@ class Login:
                 db_connection = _connect_to_db(db_name)
                 cur = db_connection.cursor()
                 print("Connected to database")
-                query = """SELECT * FROM register WHERE email= '{}' AND password = {}""".format(
+                query = """SELECT * FROM register WHERE email= '{}' AND password = '{}'""".format(
                     self.email_txt.get(),
                     self.password.get())
                 cur.execute(query)
