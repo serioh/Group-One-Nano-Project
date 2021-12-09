@@ -61,6 +61,25 @@ def create_multiple_choice_table():
 
     cur.close()
 
+def create_registration_table():
+    my_db = mysql.connector.connect(
+        host=HOST,
+        user=USER,
+        password=PASSWORD,
+        database="nano_degree_game_1",
+
+     )
+
+    cur = my_db.cursor()
+    cur.execute(f"""CREATE TABLE Register (
+                F_name VARCHAR(50) NOT NULL,
+                L_name VARCHAR(50) NOT NULL,
+                Email VARCHAR(100) NOT NULL,
+                Password VARCHAR(20) NOT NULL,
+                Confirm_password VARCHAR(20) NOT NULL);""")
+
+    cur.close()
+
 
 def insert_questions():
     my_db = mysql.connector.connect(
@@ -156,8 +175,9 @@ def insert_choices():
     cur.close()
 
 
-create_database()
-create_questions_table()
-create_multiple_choice_table()
-insert_questions()
-insert_choices()
+#create_database()
+#create_questions_table()
+#create_multiple_choice_table()
+#insert_questions()
+#insert_choices()
+create_registration_table()
