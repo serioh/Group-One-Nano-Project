@@ -33,7 +33,6 @@ def create_question_bank():
     for q in question_numbers:
         question = Question()
         question.populate_question(q)
-        # question.print_question()
         question_bank.append(question)
     return question_bank
 

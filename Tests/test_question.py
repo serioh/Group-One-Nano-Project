@@ -15,12 +15,10 @@ class TestQuestion:
     @patch('sql_python_connection.get_question')
     @patch('sql_python_connection.get_correct_answer')
     @patch('sql_python_connection.get_incorrect_answers')
-    # @patch('random.shuffle')
     def test_populate_question(self, mock_get_question, mock_get_correct_answer, mock_get_incorrect_answers):
         mock_get_question.returnvalue = MagicMock("What are the three numeric types in Python?")
         mock_get_correct_answer.returnvalue = MagicMock("Integers (int), Floats (float) and Complex Numbers (complex)")
         mock_get_incorrect_answers.returnvalue = MagicMock(['Integers (int), Floats (float) and Fractions (frac)', 'Integers (int), Fractions (frac) and Negatives (neg)', 'Floats (float), Decimals (dec) and Whole Numbers (whole)'])
-        # mock_shuffle.returnvalue = MagicMock(['Integers (int), Floats (float) and Fractions (frac)', 'Integers (int), Floats (float) and Complex Numbers (complex)', 'Integers (int), Fractions (frac) and Negatives (neg)', 'Floats (float), Decimals (dec) and Whole Numbers (whole)'])
         example_question = Question()
         random.seed(1)
         example_question.populate_question(1)
