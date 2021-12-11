@@ -49,6 +49,7 @@ def run():
 
 if __name__ == "__main__":
     # question_bank = create_question_bank()
+    # print(question_bank)
     # quiz = SnakeBrain(question_bank)
     #
     # quiz_ui = QuizInterface(quiz)

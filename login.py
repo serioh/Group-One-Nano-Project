@@ -2,7 +2,7 @@ from tkinter import *
 
 from tkinter import messagebox
 from config import USER, PASSWORD, HOST
-from sql_python_connection_rz import _connect_to_db
+from sql_python_connection import _connect_to_db
 
 
 class Login:
