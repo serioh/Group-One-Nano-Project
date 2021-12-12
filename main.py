@@ -33,7 +33,6 @@ def create_question_bank():
     for q in question_numbers:
         question = Question()
         question.populate_question(q)
-        # question.print_question()
         question_bank.append(question)
     return question_bank
 
@@ -49,6 +48,7 @@ def run():
 
 if __name__ == "__main__":
     # question_bank = create_question_bank()
+    # print(question_bank)
     # quiz = SnakeBrain(question_bank)
     #
     # quiz_ui = QuizInterface(quiz)

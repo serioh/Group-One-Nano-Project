@@ -18,10 +18,10 @@ class Question:
         random.shuffle(choices)
         self.choices = choices
     
-    def print_question(self):
-        print(self.question)
-        print(self.choices)
-        print(self.correct)
+    # def print_question(self):
+    #     print(self.question)
+    #     print(self.choices)
+    #     print(self.correct)
 
 
 
