@@ -19,7 +19,7 @@ CURRENTLY NOT WORKING:
 
 Info on other files:
 
-- *sql_python_connection_rz.py* - This is our SQL/Python Connection
+- *sql_python_connection.py* - This is our SQL/Python Connection
 - *question.py* - This is the file that selects the questions and presents them
 - *snake_brain.py* - This is our quiz brain mainframe!
 - *snake_charmer_ui.py* - This is our Tkinter UI in all of its attractive glory
