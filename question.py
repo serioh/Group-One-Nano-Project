@@ -1,6 +1,6 @@
 import random
 
-from sql_python_connection_rz import get_question, get_correct_answer, get_incorrect_answers
+from sql_python_connection import get_question, get_correct_answer, get_incorrect_answers
 
 
 class Question:

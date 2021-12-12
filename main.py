@@ -23,7 +23,7 @@ from question import Question
 from snake_brain import SnakeBrain
 from snake_charmer_ui import QuizInterface
 from login import Login
-from sql_python_connection_rz import get_question_count
+from sql_python_connection import get_question_count
 from tkinter import *
 
 def create_question_bank():
