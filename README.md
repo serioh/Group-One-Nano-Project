@@ -12,7 +12,7 @@ Then run the *main.py* file which will show the login page.
 
 Click on register, and after registration, close and run the main file again.
 
-Go to the login and the game will pop up.
+Go to the login, enter your details, and the game will pop up.
 
 CURRENTLY NOT WORKING: 
 - "Forgot Password"
