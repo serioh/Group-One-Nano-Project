@@ -1,6 +1,6 @@
 from tkinter import *
-
 from tkinter import messagebox
+from PIL import ImageTk, Image, ImageFont
 from config import USER, PASSWORD, HOST
 from sql_python_connection import _connect_to_db
 
@@ -17,48 +17,56 @@ class Login:
         # self.window.geometry("850x550")
         self.window.resizable(False, False)
         self.loginform()
+
+
         # Mainloop
         self.window.mainloop()
 
+
     def loginform(self):
         # add a frame or block in the window
-        Frame_login = Frame(self.window, bg="#90EE90")
+        Frame_login = Frame(self.window, bg='black')
         # place frame in the window, main frame
         Frame_login.place(x=0, y=0, height=700, width=1366)
+        # set background image
+        canvas = Canvas(Frame_login, height=700, width=1366)
+        canvas.pack()
+        image = Image.open("bkgroundimage.jpeg")
+        canvas.image = ImageTk.PhotoImage(image.resize((1366, 700), Image.ANTIALIAS))
+        canvas.create_image(0, 0, image=canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe
         frame_input = Frame(self.window, bg='white')
-        frame_input.place(x=320, y=130, height=450, width=350)
+        frame_input.place(x=500, y=130, height=450, width=350)
         # styling of the login header, fg text color, bg
-        login_header_label = Label(frame_input, text="Login Here", font=('arial', 32, 'bold'), fg="black",
+        login_header_label = Label(frame_input, text="Login Here", font=('Bebas Neue Regular', 32, 'bold'), fg="black",
                                    bg='white')
-        login_header_label.place(x=75, y=20)
+        login_header_label.place(x=105, y=20)
 
-        email_label = Label(frame_input, text="Email", font=("Goudy old style", 20, "bold"),
-                            fg='blue', bg='white')
+        email_label = Label(frame_input, text="Email", font=("Bebas Neue Regular", 20, "bold"),
+                            fg='black', bg='white')
         email_label.place(x=30, y=95)
         # the input box
-        self.email_txt = Entry(frame_input, font=("times new roman", 15, "bold"), bg='lightgray')
+        self.email_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
         # place to show in window
-        self.email_txt.place(x=30, y=145, width=270, height=35)
+        self.email_txt.place(x=30, y=145, width=290, height=35)
 
-        pwd_label = Label(frame_input, text="Password", font=("Goudy old style", 20, "bold"), fg='blue', bg='white')
+        pwd_label = Label(frame_input, text="Password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
         pwd_label.place(x=30, y=195)
 
-        self.password = Entry(frame_input, font=("times new roman", 15, "bold"), bg='lightgray')
-        self.password.place(x=30, y=245, width=270, height=35)
+        self.password = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.password.place(x=30, y=245, width=290, height=35)
 
-        forgot_pwdbutton = Button(frame_input, text="forgot password?", cursor='hand2', font=('calibri', 10),
+        forgot_pwdbutton = Button(frame_input, text="Forgot Password? click here", cursor='hand2', font=('calibri', 10),
                                   bg='white', fg='black', bd=0)
-        forgot_pwdbutton.place(x=125, y=305)
+        forgot_pwdbutton.place(x=95, y=300)
 
-        login_button = Button(frame_input, text="Login", command=self.login, cursor="hand2",
-                              font=("times new roman", 15)
-                              , fg="white", bg="blue", bd=0, width=15, height=1)
-        login_button.place(x=90, y=340)
+        login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
+                              font=("Bebas Neue Regular", 15), bg="white", fg="#7843E6", bd=0)
+        login_button.place(x=130, y=330)
 
-        register_button = Button(frame_input, command=self.redirect_window, text="Not Registered? register"
+        register_button = Button(frame_input, command=self.redirect_window, text="Not Registered? click here   "
                                  , cursor="hand2", font=("calibri", 10), bg='white', fg="black", bd=0)
-        register_button.place(x=110, y=390)
+        register_button.place(x=95, y=390)
 
     def login(self):
 
@@ -128,3 +136,4 @@ class Login:
 # window = Tk()
 # obj = Login(window)
 # window.mainloop()
+
