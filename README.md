@@ -4,7 +4,7 @@ README file as of 8 Dec 2021
 
 File run order: 
 
-In the *config.py*, put in your MySql login info.
+In the *config.py* file, put in your MySql login info.
 
 First run the *create_database.py* file to make the question database
 
