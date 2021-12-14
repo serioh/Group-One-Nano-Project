@@ -36,7 +36,7 @@ def create_question_bank():
         question_bank.append(question)
     return question_bank
 
-
+""" run adds all the functions in the game, and its being called in the login page"""
 def run():
     question_bank = create_question_bank()
     quiz = SnakeBrain(question_bank)
