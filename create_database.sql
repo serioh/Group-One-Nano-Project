@@ -1,24 +1,24 @@
 CREATE database Nano_Degree_Game_1;
-USE Nano_Degree_game;
+USE Nano_Degree_GAME_1;
 
-CREATE TABLE `Questions` (
-    `Q_Number` INTEGER NOT NULL,
-    `Question` VARCHAR(300) NOT NULL,
+CREATE TABLE IF NOT EXISTS `Questions` (
+    `Q_Number` INTEGER NOT NULL UNIQUE,
+    `Question` VARCHAR(300) NOT NULL UNIQUE,
     `Topic` VARCHAR(300) NOT NULL,
     `Difficulty_Level` INTEGER NOT NULL,
     `Answer` VARCHAR(300) NOT NULL,
     `Multiple_Choice` INTEGER NOT NULL,
     CONSTRAINT `PK_Q_Number` PRIMARY KEY (`Q_Number`));
 
-CREATE TABLE `Multiple_choice` (
-    `Q_Number` INTEGER NOT NULL,
+CREATE TABLE IF NOT EXISTS `Multiple_choice` (
+    `Q_Number` INTEGER NOT NULL UNIQUE,
     `Incorrect_answer_1` VARCHAR(300) NOT NULL,
     `Incorrect_answer_2` VARCHAR(300) NOT NULL,
     `Incorrect_answer_3` VARCHAR(300) NOT NULL,
     CONSTRAINT `FK_Q_Number` FOREIGN KEY (`Q_Number`)
     REFERENCES `Questions`(`Q_Number`));
 
-INSERT INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
+INSERT IGNORE INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
 VALUES 
 (2, 'What are the three numeric types in Python?', 'Numbers', 1, 'Integers (int), Floats (float) and Complex Numbers (complex)', 1),
 (3, 'Which of the following is an example of a list?', 'Lists', 1, 'ice_cream = ["vanilla", "strawberry", "pistachio", "chocolate"]', 1),
@@ -27,12 +27,12 @@ VALUES
 "', 1),
 (6, 'A tuple is one of the four built-in data types in Python. Which of these best describes a tuple?', 'Tuples', 1, 'A tuple is a collection which is unchangeable and ordered.', 1);
 
-INSERT INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
+INSERT IGNORE INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
 VALUES 
 (7, '"word = ""Python""
 Which one of these will not print the output ""This is Python""?"', 'Strings', 1, 'print("This is".append(word))', 1);
 
-INSERT INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
+INSERT IGNORE INTO `Questions` (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
 VALUES 
 (8, 'What is 5//2 ?', 'Operator', 1, '2', 1),
 (9, 'Which operation should be done first?', 'Operators', 1, 'Parentheses', 1),
@@ -85,9 +85,9 @@ from functools import reduce
 numbers = [4, 5, 3]
 print(reduce(lambda x, y: x + y, numbers))"', 'Functions', 1, '12', 1);
 
-INSERT INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
+INSERT IGNORE INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
 VALUES (1, '2', '3', '4');
-INSERT INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
+INSERT IGNORE INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
 VALUES (2, 'Integers (int), Floats (float) and Fractions (frac)', 'Integers (int), Fractions (frac) and Negatives (neg)', 'Floats (float), Decimals (dec) and Whole Numbers (whole)'),
 (3, 'ice_cream = ["ice_cream = "vanilla", "strawberry", "pistachio", "chocolate"]', 'ice_cream = {"vanilla", "strawberry", "pistachio", "chocolate"}', 'ice_cream = ("vanilla", "strawberry", "pistachio", "chocolate")'),
 (4, '.addition()', '.plus()', '.addon()'),
@@ -130,6 +130,6 @@ Complete."'),
 CREATE TABLE register(
 f_name CHAR(50),
 l_name CHAR(50),
-email VARCHAR(100),
+email VARCHAR(100) UNIQUE,
 password VARCHAR(20) ,
 confirm_password VARCHAR(20));
