@@ -4,7 +4,7 @@ README file as of 8 Dec 2021
 
 File run order: 
 
-In the config, put in your MySql login info.
+In the *config.py* file, put in your MySql login info.
 
 First run the *create_database.py* file to make the question database
 
@@ -12,7 +12,7 @@ Then run the *main.py* file which will show the login page.
 
 Click on register, and after registration, close and run the main file again.
 
-Go to the login and the game will pop up.
+Go to the login, enter your details, and the game will pop up.
 
 CURRENTLY NOT WORKING: 
 - "Forgot Password"
