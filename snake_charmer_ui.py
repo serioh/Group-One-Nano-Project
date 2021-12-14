@@ -109,12 +109,15 @@ class QuizInterface:
             self.opts[val]["value"] = option
             val += 1
 
+    def wrong_questions_message(self):
+        self.feedback["text"] = "Try this question again"
+
     def next_btn(self):
         # Shows feedback for each answer and checks for more questions
 
         # Check to see if the answer is correct
         if self.quiz.check_answer(self.user_answer.get()):
-            self.feedback["fg"] = "white"
+            self.feedback["fg"] = "#000000" #Black
             self.feedback["text"] = "That's correct!"
 
         else:
@@ -128,6 +131,8 @@ class QuizInterface:
             # Moves to the next display
             self.display_question()
             self.display_options()
+            if self.quiz.question_no > 10:
+                self.wrong_questions_message()
         else:
             # If no more questions, then shows score
             self.display_result()

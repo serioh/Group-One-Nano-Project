@@ -5,11 +5,12 @@ from sql_python_connection import get_question, get_correct_answer, get_incorrec
 
 class Question:
 
-    def __init__(self, question = None, choices = None, correct = None):
+    def __init__(self, question = None, choices = None, correct = None, index=None):
         self.question = question
         self.choices = choices
         self.correct = correct
-    
+        self.index = index
+
     def populate_question(self, question_number):
         self.question = get_question(question_number)
         self.correct = get_correct_answer(question_number)
@@ -22,7 +23,3 @@ class Question:
     #     print(self.question)
     #     print(self.choices)
     #     print(self.correct)
-
-
-
-        

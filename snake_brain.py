@@ -16,6 +16,8 @@ class SnakeBrain:
         self.score = 0
         self.questions = questions
         self.current_question = None
+        for idx, question in enumerate(self.questions):
+            question.index = idx
 
     def has_more_questions(self):
         # To check if quiz has more questions
@@ -24,11 +26,15 @@ class SnakeBrain:
 
     def next_question(self):
         # Get the next question by incrementing the question number
-
-        self.current_question = self.questions[self.question_no]
+        if self.current_question == None:
+            self.current_question = self.questions[0]
+            self.current_question.index = 0
+        else:
+            self.current_question = self.questions[self.current_question.index]
+        self.current_question.index += 1
         self.question_no += 1
         q_text = self.current_question.question
-        return f"Q. {self.question_no}: {q_text}"
+        return f"Q. {self.current_question.index}: {q_text}"
 
     def check_answer(self, user_answer):
         # Check the user answer against the correct answer and maintain score
@@ -37,7 +43,8 @@ class SnakeBrain:
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
             return True
-        else:
+        elif user_answer.lower() != correct_answer.lower():
+            self.questions.append(self.current_question)
             return False
 
     def get_score(self):
@@ -49,4 +56,3 @@ class SnakeBrain:
 
         # If we don't want to do percentage, as we discussed
         # delete the score_percent variable and remove it from the return
-
