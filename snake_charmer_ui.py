@@ -195,18 +195,19 @@ class QuizInterface:
 
         # deselecting the options
         self.user_answer.set(None)
-
+        i = 0
         # looping over the options to be displayed for the text of the radio buttons
         for key, value in self.quiz.wrong_questions.items():
-            self.opts[val]["text"] = value
-            self.opts[val]["value"] = value
-            val += 1
+            while i < len(self.quiz.wrong_questions):
+                self.opts[val]["text"] = value[i]
+                self.opts[val]["value"] = value[i]
+                val += 1
+                i += 1
 
     def try_again(self):
         again = messagebox.askquestion("Continue?", "Do you want to try the wrong questions again?")
         if again == "yes":
             self.display_wrong_questions()
-            self.radio_buttons()
             self.display_wrong_question_options()
         else:
             self.window.destroy()
