@@ -186,9 +186,11 @@ class QuizInterface:
         messagebox.showinfo("Result", f"{result}\n{correct}\n{wrong}")
 
     def display_wrong_questions(self):
+        # for key, value in self.quiz.wrong_questions.items():
+        q_text_list = []
         for key, value in self.quiz.wrong_questions.items():
             q_text = key
-            # q_text = q
+        # q_text = q
             self.canvas1.itemconfig(self.question_text, text=q_text)
 
     def display_wrong_question_options(self):
@@ -200,7 +202,7 @@ class QuizInterface:
         # looping over the options to be displayed for the text of the radio buttons
         for key, value in self.quiz.wrong_questions.items():
             len_wrong_questions = len(self.quiz.wrong_questions)
-            while i <= len_wrong_questions:
+            while i < len_wrong_questions:
                 self.opts[val]["text"] = value[i]
                 self.opts[val]["value"] = value[i]
                 self.quiz.wrong_questions.pop(key, value)
