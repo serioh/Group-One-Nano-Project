@@ -137,6 +137,7 @@ class QuizInterface:
         else:
             # If no more questions, then shows score
             self.display_result()
+
             if len(self.quiz.wrong_questions) > 0:
                 self.try_again()
             else:
@@ -201,14 +202,17 @@ class QuizInterface:
             while i < len(self.quiz.wrong_questions):
                 self.opts[val]["text"] = value[i]
                 self.opts[val]["value"] = value[i]
+                self.quiz.wrong_questions.pop(key, value)
                 val += 1
                 i += 1
+
 
     def try_again(self):
         again = messagebox.askquestion("Continue?", "Do you want to try the wrong questions again?")
         if again == "yes":
-            self.display_wrong_questions()
-            self.display_wrong_question_options()
+            while len(self.quiz.wrong_questions)-1 > 0:
+                self.display_wrong_questions()
+                self.display_wrong_question_options()
         else:
             self.window.destroy()
 
