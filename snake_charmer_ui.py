@@ -56,6 +56,7 @@ class QuizInterface:
 
         # Mainloop
         self.window.mainloop()
+        self.end_of_game()
 
 
     def display_question(self):
@@ -109,9 +110,6 @@ class QuizInterface:
             self.opts[val]["text"] = option
             self.opts[val]["value"] = option
             val += 1
-
-    def wrong_questions_message(self):
-        self.feedback["text"] = "Try this question again"
 
     def next_btn(self):
         # Shows feedback for each answer and checks for more questions
@@ -188,8 +186,8 @@ class QuizInterface:
     def display_wrong_questions(self):
         # for key, value in self.quiz.wrong_questions.items():
         q_text_list = []
-        for key, value in self.quiz.wrong_questions.items():
-            q_text = key
+        for wrong in self.quiz.wrong_questions:
+            q_text = wrong.question
         # q_text = q
             self.canvas1.itemconfig(self.question_text, text=q_text)
 
@@ -198,21 +196,18 @@ class QuizInterface:
 
         # deselecting the options
         self.user_answer.set(None)
-        i = 0
+
         # looping over the options to be displayed for the text of the radio buttons
-        for key, value in self.quiz.wrong_questions.items():
-            len_wrong_questions = len(self.quiz.wrong_questions)
-            while i < len_wrong_questions:
-                self.opts[val]["text"] = value[i]
-                self.opts[val]["value"] = value[i]
-                self.quiz.wrong_questions.pop(key, value)
+        for wq in self.quiz.wrong_questions:
+            for option in wq.choices:
+                self.opts[val]["text"] = option
+                self.opts[val]["value"] = option
                 val += 1
-                i += 1
 
     def try_again(self):
         again = messagebox.askquestion("Continue?", "Do you want to try the wrong questions again?")
         if again == "yes":
-            for i in range(len(self.quiz.wrong_questions)-1):
+            for q in self.quiz.wrong_questions:
                 self.display_wrong_questions()
                 self.display_wrong_question_options()
             self.window.destroy()

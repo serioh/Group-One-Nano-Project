@@ -8,6 +8,7 @@ API URL: https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=
 
 """
 # import fetch_questions
+from question import Question
 
 class SnakeBrain:
 
@@ -18,7 +19,8 @@ class SnakeBrain:
         self.current_question = None
         for idx, question in enumerate(self.questions):
             question.index = idx
-        self.wrong_questions = {}
+        self.wrong = None
+        self.wrong_questions = []
 
     def has_more_questions(self):
         # To check if quiz has more questions
@@ -44,15 +46,17 @@ class SnakeBrain:
             self.score += 1
             return True
         elif user_answer.lower() != correct_answer.lower():
-            self.wrong_questions[self.current_question.question] = self.current_question.choices
+            wrong = Question(self.current_question)
+            # self.current_question.populate_question()
+            self.wrong_questions.append(wrong)
             return False
 
     def get_score(self):
         # Get the number of correct answers, wrong answers and score percentage
 
-        wrong = self.question_no - self.score
+        self.wrong = self.question_no - self.score
         score_percent = int(self.score / self.question_no * 100)
-        return (self.score, wrong, score_percent)
+        return self.score, self.wrong, score_percent
 
         # If we don't want to do percentage, as we discussed
         # delete the score_percent variable and remove it from the return
