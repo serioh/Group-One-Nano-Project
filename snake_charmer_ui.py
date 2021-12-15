@@ -150,7 +150,8 @@ class QuizInterface:
         )
 
         # placing the Next button on the screen
-        next_button.place(x=405, y=560)
+        # next_button.place(x=405, y=560)
+        next_button.place(relx = 0.4, rely = 0.9)
 
         quit_button = Button(
             self.frame_input,
@@ -163,7 +164,8 @@ class QuizInterface:
         )
 
         # Quit button placement on screen
-        quit_button.place(x=840, y=15)
+        # quit_button.place(x=840, y=15)
+        quit_button.place(relx=0.9, rely=0.05)
 
     def display_result(self):
         # To display the result using messagebox

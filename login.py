@@ -40,7 +40,8 @@ class Login:
         # styling of the login header, fg text color, bg
         login_header_label = Label(frame_input, text="Login Here", font=('Bebas Neue Regular', 32, 'bold'), fg="black",
                                    bg='white')
-        login_header_label.place(x=105, y=20)
+        # login_header_label.place(x=105, y=20)
+        login_header_label.place(relx=0.15, rely=0.05)
 
         email_label = Label(frame_input, text="Email", font=("Bebas Neue Regular", 20, "bold"),
                             fg='black', bg='white')
@@ -58,11 +59,13 @@ class Login:
 
         login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
                               font=("Bebas Neue Regular", 15), bg="white", fg="#7843E6", bd=0)
-        login_button.place(x=130, y=330)
+        # login_button.place(x=130, y=330)
+        login_button.place(relx=0.2, rely=0.75)
 
         register_button = Button(frame_input, command=self.redirect_window, text="Not Registered? click here   "
                                  , cursor="hand2", font=("calibri", 10), bg='white', fg="black", bd=0)
-        register_button.place(x=95, y=390)
+        # register_button.place(x=95, y=390)
+        register_button.place(relx=0.25, rely=0.9)
 
     def login(self):
 
