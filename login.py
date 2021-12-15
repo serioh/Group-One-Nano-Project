@@ -56,10 +56,6 @@ class Login:
         self.password = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
         self.password.place(x=30, y=245, width=290, height=35)
 
-        forgot_pwdbutton = Button(frame_input, text="Forgot Password? click here", cursor='hand2', font=('calibri', 10),
-                                  bg='white', fg='black', bd=0)
-        forgot_pwdbutton.place(x=95, y=300)
-
         login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
                               font=("Bebas Neue Regular", 15), bg="white", fg="#7843E6", bd=0)
         login_button.place(x=130, y=330)
@@ -99,11 +95,9 @@ class Login:
 
                     cur.close()
 
-            except Exception as es:
 
-                messagebox.showerror('Error', f'Error Due to : {str(es)}'
-
-                                     , parent=self.window)
+            except Exception:
+                pass
 
     def redirect_window(self):
         self.window.destroy()
@@ -117,12 +111,9 @@ class Login:
         self.password_entry.delete(0, END)
 
     def appscreen(self):
-
         self.window.destroy()
-        print('welcome')
-        # from snake_charmer_ui import QuizInterface
         from main import run
-        # window = Tk()
+
         obj = run()  # QuizInterface(window)
         obj.mainloop()
 
@@ -133,7 +124,6 @@ class Login:
         self.password.delete(0, END)
 
 
-# window = Tk()
-# obj = Login(window)
-# window.mainloop()
+
+
 

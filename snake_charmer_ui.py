@@ -1,27 +1,43 @@
 from tkinter import Tk, Canvas, StringVar, Label, Radiobutton, Button, messagebox
+from tkinter import *
 # presumably the above could just be written from tkinter import *
 from snake_brain import SnakeBrain
+from PIL import ImageTk, Image, ImageFont
 
-THEME_COLOR = "#90EE90"  # A "PaleGreen" to go with our snake theme
+THEME_COLOR = "#7843E6"  # A "Purple" to go with our theme
 
 
 class QuizInterface:
 
     def __init__(self, snake_brain: SnakeBrain) -> None:
         self.quiz = snake_brain
+        # initialise a variable window which would be used to create a tinker object
         self.window = Tk()
-        self.window.title("Snake Charmer Practice Quiz")
-        self.window.geometry("850x550")
+        # set the title of the window
+        self.window.title("Snake Charmer Quiz")
+        # set the size
+        self.window.geometry("1366x800+0+0")
+        self.window.resizable(False, False)
 
-        # Display Title
-        self.display_title()
-
-        # Creating a canvas for question text and display question
-        self.canvas = Canvas(width=800, height=250)
-        self.question_text = self.canvas.create_text(
-            400, 125, text="Question here", width=680, fill=THEME_COLOR,
-            font=('Arial', 15, 'italic'))  # Feel free to change the font and italics
-        self.canvas.grid(row=2, column=0, columnspan=2, pady=50)
+        # Creating a frame for question text and display question
+        self.frame_general = Frame(self.window, bg='black')
+        # place frame in the window, main frame
+        self.frame_general.place(x=0, y=0, height=800, width=1366)
+        # set background image
+        self.canvas = Canvas(self.frame_general, height=800, width=1366)
+        self.canvas.pack()
+        self.image = Image.open("bkgroundimage_game.jpeg")
+        self.canvas.image = ImageTk.PhotoImage(self.image.resize((1366, 800), Image.ANTIALIAS))
+        self.canvas.create_image(0, 0, image=self.canvas.image, anchor='nw')
+        # another frame to add buttons for user,email basically subframe
+        self.frame_input = Frame(self.window, bg='white')
+        self.frame_input.place(x=238, y=120, height=600, width=890)
+        self.canvas1 = Canvas(self.frame_input, height=600, width=890)
+        self.canvas1.pack()
+        self.question_text = self.canvas1.create_text(
+            400, 100, text="Question here", width=800, fill=THEME_COLOR,
+            font=('Bebas Neue Regular', 20, 'bold'))  # Feel free to change the font and italics
+        #Display Question
         self.display_question()
 
         # Use a StringVar to store user's answer
@@ -32,8 +48,8 @@ class QuizInterface:
         self.display_options()
 
         # To show whether the answer is correct or wrong
-        self.feedback = Label(self.window, pady=10, font=("arial", 15, "bold"))
-        self.feedback.place(x=300, y=380)
+        self.feedback = Label(self.frame_input, pady=10, font=("Bebas Neue Regular", 15, "bold"))
+        self.feedback.place(x=700, y=550)
 
         # Next and Quit Button
         self.buttons()
@@ -41,56 +57,41 @@ class QuizInterface:
         # Mainloop
         self.window.mainloop()
 
-    def display_title(self):
-        # Does what it says on the tin
-
-        # Title
-        # Please note bg = background, fg = foreground (text colour)
-        title = Label(self.window,
-                      text="BETA Snake Charmer Quiz Game",
-                      width=50,
-                      bg="DarkGreen",  # Sea Green
-                      fg="white",  # DarkGoldenrod
-                      font=("arial", 20, "bold")
-                      )
-
-        # title placement
-        title.place(x=0, y=2)
 
     def display_question(self):
         # To display the question
 
         q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
+        self.canvas1.itemconfig(self.question_text, text=q_text)
 
     def radio_buttons(self):
-        # To make four options in radio buttons
+        # To make four answer multiple choice options in radio buttons format
 
         # We initialise the list w/ an empty list of options
         choice_list = []
 
         # position of the first option
-        y_pos = 220
+        y_pos = 230
 
         # adding the options to the list
         while len(choice_list) < 4:
             # setting the radio button properties
             radio_btn = Radiobutton(
-                self.window,
+                self.frame_input,
                 text="",
                 variable=self.user_answer,
                 value='',
-                font=("arial", 14)
+                font=("Bebas Neue Regularl", 14)
             )
 
             # adding the button to the list
             choice_list.append(radio_btn)
 
             # button placement
-            radio_btn.place(x=200, y=y_pos)
+            radio_btn.place(x=20, y=y_pos)
 
-            # incrementing the y-axis position by 40
-            y_pos += 40
+            # incrementing the y-axis position by 80
+            y_pos += 90
 
         # return the radio buttons
         return choice_list
@@ -144,30 +145,30 @@ class QuizInterface:
         # To show next button and quit button
 
         next_button = Button(
-            self.window,
+            self.frame_input,
             text="Next",
             command=self.next_btn,
             width=10,
-            bg="green",
-            fg="black",
-            font=("arial", 16, "bold")
+            bg="white",
+            fg="#7843E6",
+            font=("Bebas Neue Regular", 16, "bold")
         )
 
         # placing the Next button on the screen
-        next_button.place(x=350, y=460)
+        next_button.place(x=405, y=560)
 
         quit_button = Button(
-            self.window,
+            self.frame_input,
             text="Quit",
             command=self.window.destroy,
             width=5,
             bg="gray",  # Dark grey
             fg="black",
-            font=("arial", 16, "bold")
+            font=("Bebas Neue Regular", 16, "bold")
         )
 
         # Quit button placement on screen
-        quit_button.place(x=700, y=50)
+        quit_button.place(x=840, y=15)
 
     def display_result(self):
         # To display the result using messagebox
@@ -181,3 +182,4 @@ class QuizInterface:
 
         # shows a messagebox to display the result
         messagebox.showinfo("Result", f"{result}\n{correct}\n{wrong}")
+

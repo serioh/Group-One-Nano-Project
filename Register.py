@@ -96,7 +96,7 @@ class Register:
             messagebox.showerror("Error", "All Fields Are Required", parent=self.window)
         elif self.password_txt.get() != self.confirm_password_txt.get():
             messagebox.showerror("Error!", "Password and Confirm Password does not match", parent=self.window)
-            # if self.entry.get() == "" or self.entry2.get() == "" or self.entry3.get() == "" or self.entry4.get() == "":
+
 
             messagebox.showerror("Error", "All Fields Are Required", parent=self.window)
 
