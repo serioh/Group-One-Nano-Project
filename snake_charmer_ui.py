@@ -132,14 +132,15 @@ class QuizInterface:
             # Moves to the next display
             self.display_question()
             self.display_options()
-            if self.quiz.question_no > 10:
-                self.wrong_questions_message()
+            # if self.quiz.question_no > 10:
+            #     self.wrong_questions_message()
         else:
             # If no more questions, then shows score
             self.display_result()
-
-            # destroys the self.window
-            self.window.destroy()
+            if len(self.quiz.wrong_questions) > 0:
+                self.try_again()
+            else:
+                self.window.destroy()
 
     def buttons(self):
         # To show next button and quit button
@@ -182,4 +183,33 @@ class QuizInterface:
 
         # shows a messagebox to display the result
         messagebox.showinfo("Result", f"{result}\n{correct}\n{wrong}")
+
+    def display_wrong_questions(self):
+        for key, value in self.quiz.wrong_questions.items():
+            q_text = key
+            # q_text = q
+            self.canvas1.itemconfig(self.question_text, text=q_text)
+
+    def display_wrong_question_options(self):
+        val = 0
+
+        # deselecting the options
+        self.user_answer.set(None)
+
+        # looping over the options to be displayed for the text of the radio buttons
+        for key, value in self.quiz.wrong_questions.items():
+            self.opts[val]["text"] = value
+            self.opts[val]["value"] = value
+            val += 1
+
+    def try_again(self):
+        again = messagebox.askquestion("Continue?", "Do you want to try the wrong questions again?")
+        if again == "yes":
+            self.display_wrong_questions()
+            self.radio_buttons()
+            self.display_wrong_question_options()
+        else:
+            self.window.destroy()
+
+
 

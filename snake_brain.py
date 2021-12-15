@@ -18,6 +18,7 @@ class SnakeBrain:
         self.current_question = None
         for idx, question in enumerate(self.questions):
             question.index = idx
+        self.wrong_questions = {}
 
     def has_more_questions(self):
         # To check if quiz has more questions
@@ -38,13 +39,12 @@ class SnakeBrain:
 
     def check_answer(self, user_answer):
         # Check the user answer against the correct answer and maintain score
-
         correct_answer = self.current_question.correct
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
             return True
         elif user_answer.lower() != correct_answer.lower():
-            self.questions.append(self.current_question)
+            self.wrong_questions[self.current_question.question] = self.current_question.choices
             return False
 
     def get_score(self):
