@@ -1,12 +1,26 @@
 import mysql.connector
 from config import USER, PASSWORD, HOST
 from pprint import pp
+from mysql.connector import connect
 
 
 class DbConnectionError(Exception):
     pass
 
+def open_connection_pool():
+    try:
+        connection_pool = connect(pool_name="question_pool",
+                                    pool_size=5,
+                                    pool_reset_session=True,
+                                    host=HOST,
+                                    database="Nano_Degree_Game_1",
+                                    user=USER,
+                                    password=PASSWORD)
+    except Exception:
+        raise DbConnectionError("Failed to read data from DB")
+    return connection_pool
 
+# used in login.py
 def _connect_to_db(db_name):
     cnx = mysql.connector.connect(
         host=HOST,
@@ -20,8 +34,9 @@ def _connect_to_db(db_name):
 
 def get_question(question_number):
     try:
-        db_name = "Nano_Degree_Game_1"
-        db_connection = _connect_to_db(db_name)
+        # db_name = "Nano_Degree_Game_1"
+        # db_connection = _connect_to_db(db_name)
+        db_connection = connect(pool_name="question_pool")
         cur = db_connection.cursor()
         print("Connected to database")
 
@@ -48,8 +63,9 @@ def get_question(question_number):
 
 def get_correct_answer(question_number):
     try:
-        db_name = "Nano_Degree_Game_1"
-        db_connection = _connect_to_db(db_name)
+        # db_name = "Nano_Degree_Game_1"
+        # db_connection = _connect_to_db(db_name)
+        db_connection = connect(pool_name="question_pool")
         cur = db_connection.cursor()
         print("Connected to database")
 
@@ -74,8 +90,9 @@ def get_correct_answer(question_number):
 
 def get_incorrect_answers(question_number):
     try:
-        db_name = "Nano_Degree_Game_1"
-        db_connection = _connect_to_db(db_name)
+        # db_name = "Nano_Degree_Game_1"
+        # db_connection = _connect_to_db(db_name)
+        db_connection = connect(pool_name="question_pool")
         cur = db_connection.cursor()
         print("Connected to database")
 
@@ -104,8 +121,9 @@ def get_incorrect_answers(question_number):
 
 def get_question_count():
     try:
-        db_name = "Nano_Degree_Game_1"
-        db_connection = _connect_to_db(db_name)
+        # db_name = "Nano_Degree_Game_1"
+        # db_connection = _connect_to_db(db_name)
+        db_connection = connect(pool_name="question_pool")
         cur = db_connection.cursor()
         print("Connected to database")
 
@@ -123,8 +141,9 @@ def get_question_count():
             print("DB connection is closed")
 
 if __name__ == "__main__":
-
-    _connect_to_db("Nano_Degree_Game_1")
+    pass
+    # connection_pool = open_connection_pool()
+    # # _connect_to_db("Nano_Degree_Game_1")
     # print(get_question(1))
     # print("*********")
     # print(get_correct_answer(1))
