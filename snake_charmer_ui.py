@@ -154,7 +154,6 @@ class QuizInterface:
         )
 
         # placing the Next button on the screen
-        # next_button.place(x=405, y=560)
         next_button.place(anchor=S, relx = 0.5, rely = 0.98)
 
         quit_button = Button(
@@ -168,7 +167,6 @@ class QuizInterface:
         )
 
         # Quit button placement on screen
-        # quit_button.place(x=840, y=15)
         quit_button.place(anchor =NE, relx=0.98, rely=0.02)
 
     def display_result(self):

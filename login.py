@@ -60,12 +60,10 @@ class Login:
 
         login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
                               font=("Bebas Neue Regular", 15), bg="white", fg="#7843E6", bd=0)
-        # login_button.place(x=130, y=330)
         login_button.place(anchor=N, relx=0.5, rely=0.7)
 
         register_button = Button(frame_input, command=self.redirect_window, text="Not Registered? click here"
                                  , cursor="hand2", font=("calibri", 10), bg='white', fg="black", bd=0)
-        # register_button.place(x=95, y=390)
         register_button.place(anchor=N, relx=0.5, rely=0.9)
 
     def login(self):
