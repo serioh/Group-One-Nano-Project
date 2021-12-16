@@ -55,7 +55,7 @@ class Login:
         pwd_label = Label(frame_input, text="Password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
         pwd_label.place(x=30, y=195)
 
-        self.password = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.password = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         self.password.place(x=30, y=245, width=290, height=35)
 
         login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
