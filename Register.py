@@ -67,14 +67,14 @@ class Register:
         password = Label(frame_input, text="New password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
         password.place(x=20, y=270)
         # the input box
-        self.password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         # place to show in window
         self.password_txt.place(x=20, y=300, width=290, height=35)
         # styling of the input header, fg text color, bg
         confirm_password = Label(frame_input, text="Confirm password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
         confirm_password.place(x=20, y=340)
         # the input box
-        self.confirm_password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.confirm_password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         # place to show in window
         self.confirm_password_txt.place(x=20, y=370, width=290, height=35)
         self.signup = Button(frame_input, text="Sign Up", command=self.signup, cursor="hand2",
