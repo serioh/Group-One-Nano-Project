@@ -41,8 +41,8 @@ class Register:
         frame_input = Frame(self.window, bg='white')
         frame_input.place(x=500, y=130, height=450, width=350)
         # styling of the signup header, fg text color, bg
-        signup_header_label = Label(frame_input, text="Create an account ", font=("Bebas Neue Regular", 32, "bold"), fg="black", bg="white")
-        signup_header_label.place(x=70, y=10)
+        signup_header_label = Label(frame_input, text="Create an account ", font=("Bebas Neue Regular", 24, "bold"), fg="black", bg="white")
+        signup_header_label.place(x=35, y=10)
         f_name = Label(frame_input, text="First name", font=("Bebas Neue Regular", 20, "bold"),fg='black', bg="white")
         f_name.place(x=20, y=60)
         # the input box
@@ -79,7 +79,7 @@ class Register:
         self.confirm_password_txt.place(x=20, y=370, width=290, height=35)
         self.signup = Button(frame_input, text="Sign Up", command=self.signup, cursor="hand2",
                              font=("Bebas Neue Regular", 18, "bold"), bg="white", fg="#7843E6", bd=0,)
-        self.signup.place(x=20, y=420, width=290)
+        self.signup.place(x=20, y=410, width=290)
 
     def regclear(self):
 
@@ -134,6 +134,5 @@ class Register:
             except Exception as es:
 
                 messagebox.showerror("Error", f"Error due to:{str(es)}", parent=self.window)
-
 
 
