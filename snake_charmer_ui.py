@@ -81,7 +81,7 @@ class QuizInterface:
                 text="",
                 variable=self.user_answer,
                 value='',
-                font=("Bebas Neue Regularl", 14)
+                font=("Bebas Neue Regular", 14)
             )
 
             # adding the button to the list
@@ -176,7 +176,7 @@ class QuizInterface:
         correct = f"Correct: {correct}"
         wrong = f"Wrong: {wrong}"
 
-        # caculates the percentage of correct answers
+        # calculates the percentage of correct answers
         result = f"Score: {score_percent}%"
 
         # shows a messagebox to display the result
