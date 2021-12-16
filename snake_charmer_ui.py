@@ -49,7 +49,7 @@ class QuizInterface:
 
         # To show whether the answer is correct or wrong
         self.feedback = Label(self.frame_input, pady=10, font=("Bebas Neue Regular", 15, "bold"))
-        self.feedback.place(x=700, y=550)
+        self.feedback.place(anchor=SE, relx=0.95, rely=0.95)
 
         # Next and Quit Button
         self.buttons()
@@ -102,7 +102,11 @@ class QuizInterface:
         val = 0
 
         # deselecting the options
-        self.user_answer.set(None)
+        if 'None' in self.quiz.current_question.choices:
+            no_selection = "Default"
+        else:
+            no_selection = None
+        self.user_answer.set(no_selection)
 
         # looping over the options to be displayed for the text of the radio buttons
         for option in self.quiz.current_question.choices:
@@ -150,7 +154,7 @@ class QuizInterface:
         )
 
         # placing the Next button on the screen
-        next_button.place(x=405, y=560)
+        next_button.place(anchor=S, relx = 0.5, rely = 0.98)
 
         quit_button = Button(
             self.frame_input,
@@ -163,7 +167,7 @@ class QuizInterface:
         )
 
         # Quit button placement on screen
-        quit_button.place(x=840, y=15)
+        quit_button.place(anchor =NE, relx=0.98, rely=0.02)
 
     def display_result(self):
         # To display the result using messagebox
