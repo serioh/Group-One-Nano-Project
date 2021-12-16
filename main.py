@@ -29,7 +29,7 @@ from tkinter import *
 def create_question_bank():
     open_connection_pool()
     question_count = get_question_count()
-    question_numbers = random.sample(range(1, question_count+1), 2)
+    question_numbers = random.sample(range(1, question_count+1), 10)
     question_bank = []
     for q in question_numbers:
         question = Question()
