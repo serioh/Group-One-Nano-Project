@@ -14,7 +14,7 @@ def create_database():
     )
 
     cur = my_db.cursor()
-    cur.execute("CREATE DATABASE IF NOT EXISTS nano_degree_game_1")
+    cur.execute("CREATE DATABASE nano_degree_game_1")
 
     cur.close()
 
@@ -29,9 +29,9 @@ def create_questions_table():
     )
 
     cur = my_db.cursor()
-    cur.execute(f"""CREATE TABLE IF NOT EXISTS `Questions` (
-                `Q_Number` INTEGER NOT NULL UNIQUE,
-                `Question` VARCHAR(300) NOT NULL UNIQUE,
+    cur.execute(f"""CREATE TABLE `Questions` (
+                `Q_Number` INTEGER NOT NULL,
+                `Question` VARCHAR(300) NOT NULL,
                 `Topic` VARCHAR(300) NOT NULL,
                 `Difficulty_Level` INTEGER NOT NULL,
                 `Answer` VARCHAR(300) NOT NULL,
@@ -51,8 +51,8 @@ def create_multiple_choice_table():
     )
 
     cur = my_db.cursor()
-    cur.execute(f"""CREATE TABLE IF NOT EXISTS `Multiple_choice`(
-                `Q_Number` INTEGER NOT NULL UNIQUE,
+    cur.execute(f"""CREATE TABLE `Multiple_choice` (
+                `Q_Number` INTEGER NOT NULL,
                 `Incorrect_answer_1` VARCHAR(300) NOT NULL,
                 `Incorrect_answer_2` VARCHAR(300) NOT NULL,
                 `Incorrect_answer_3` VARCHAR(300) NOT NULL,
@@ -91,7 +91,7 @@ def insert_questions():
     )
 
     cur = my_db.cursor()
-    query = """INSERT IGNORE INTO questions (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
+    query = """INSERT INTO questions (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
                 VALUES (%s, %s, %s, %s, %s, %s)"""
     val = [
         (1, 'What are the three numeric types in Python?', 'Numbers', 1, "Integers (int), Floats (float) and Complex Numbers (complex)", 1),
@@ -104,7 +104,7 @@ def insert_questions():
         (8, 'Which operation should be done first?', 'Operators', 1, 'Parentheses', 1),
         (9, 'What is print(True or False)?', 'Boolean', 1, 'True', 1),
         (10, 'ListZ = [a for a in range(5)]. What is ListZ?', 'Lists', 1, '[0,1,2,3,4]', 1),
-        (11, 'Which of the following is a good naming convention in python?', 'Syntax', 1, 'my_variable', 1),
+        (11, 'Which of the following is a good naming convention in python for variables?', 'Syntax', 1, 'my_variable', 1),
         (12, 'Which of the following is a string method?', 'String Methods', 1, 'join()', 1),
         (13, 'Which of the following are methods for a Tuple?', 'Tuple Methods', 1, 'count(), index()', 1),
         (14, 'Which among the following does not allow duplicate items?', 'Sets', 1, 'set', 1),
@@ -114,10 +114,10 @@ def insert_questions():
         (18, '"What output will the following give: print(2 % 2)"', 'Operators', 1, '0', 1),
         (19, '"What does the following return: "Hi".isupper()"', 'String Methods', 1, 'False', 1),
         (20, '"my_list = [1, 56, 8, 2]; fill in the blank index to print "8" from my_list. print(my_list[_])"', 'Lists', 1, '2', 1),
-        (21, 'What type of iteration is "while" loop used for?', 'Loops', 1, 'Indefinite', 1),
-        (22, '"What is the output of the following code: s = {"salt": 1, "pepper": 2, "chilli": 3} while s: print(s.popitem()) print("Complete.")"', 'Loops', 1, '"("chilli", 3)("pepper", 2)("salt", 1)Complete."', 1),
-        (23, '"What is the output of the following code: s = {"salt": 1, "pepper": 2, "chilli": 3} while len(s) > 3: print(s.popitem()) print("Complete.")"', 'Loops', 1, 'Complete.', 1),
-        (24, '"What is the output of the following code:\ns = ["salt", "pepper", "chilli", "garlic", "onion"]\nwhile s:\n\tif len(s) < 3:\n\tbreak\n\tprint(s.pop())\n\tprint("Complete.")"', 'Loops', 1, 'onion\n\tgarlic\n\tchilli\n\tComplete.', 1),
+        (21, 'In Python, what is the term typically used to describe the type of iteration a while loop is used for?', 'Loops', 1, 'Indefinite', 1),
+        (22, '"Which of the following is a method for both a list and a tuple?"', 'Lists/Tuples', 1, '"index()"', 1),
+        (23, '"In file handling, the open() function takes two parameters. What are they?"', 'File Handling', 1, 'filename and mode', 1),
+        (24, 'How do we add a new item to index 1 to this list? our_pets = ["Foxx", "Broccoli"]', 'Lists', 1, "our_pets.insert(1, 'Biscoff')", 1),
         (25, '"What is the output of the following code: print((lambda x: (x + 9) * 2 / 4)(3))"', 'Functions', 1, '6.0', 1),
         (26, '"What is the output of the following code:\nfrom functools import reduce\nnumbers = [4, 5, 3]\nprint(reduce(lambda x, y: x + y, numbers))"', 'Functions', 1, '12', 1)
     ]
@@ -138,7 +138,7 @@ def insert_choices():
     )
 
     cur = my_db.cursor()
-    query = """INSERT IGNORE INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
+    query = """INSERT INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
                 VALUES (%s, %s, %s, %s)"""
 
     val = [
@@ -157,15 +157,15 @@ def insert_choices():
         (13, 'clear(),count()', 'append(),extend()', 'pop(),insert()'),
         (14, 'List', 'Tuple', 'Strings'),
         (15, '<>', '>>', '**'),
-        (16, 'Decoding', 'Serialising', 'Unpickling'),
+        (16, 'Decoding', 'Hashing', 'Unpickling'),
         (17, 'print(str[::])', 'print(reversed(str))', 'print(str[::1])'),
         (18, '2', '0.5', '1'),
         (19, 'None', 'Error', 'True'),
         (20, '3', '-1', '0'),
         (21, 'Discriminant', 'Indeterminate', 'Definite'),
-        (22, '"chilli\npepper\nsalt"', 'Complete', 'No output is generated'),
-        (23, 'No output is generated.', '"chilli\npepper\nsalt"', "('chilli', 3)\n('pepper', 2)\n('salt', 1)\nComplete."),
-        (24, '"onion\ngarlic\nchilli"', 'No output is generated.', '"salt\npepper\nchilli\nComplete."'),
+        (22, '"sort()"', 'clear()', 'pop()'),
+        (23, 'read and write', 'text and binary', "create and modify"),
+        (24, "our_pets.pop('Biscoff', 1)", "our_pets.append(1, 'Biscoff')", "our_pets.add('Biscoff', 1)"),
         (25, '12.0', 'Syntax Error', '0'),
         (26, '6', '60', 'Syntax Error')
     ]
