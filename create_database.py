@@ -165,7 +165,7 @@ def insert_choices():
         (21, 'Discriminant', 'Indeterminate', 'Definite'),
         (22, '"sort()"', 'clear()', 'pop()'),
         (23, 'read and write', 'text and binary', "create and modify"),
-        (24, "our_pets.pop('Biscoff', 1)", "our_pets.append(1, 'Biscoff'", "our_pets.add('Biscoff', 1)"),
+        (24, "our_pets.pop('Biscoff', 1)", "our_pets.append(1, 'Biscoff')", "our_pets.add('Biscoff', 1)"),
         (25, '12.0', 'Syntax Error', '0'),
         (26, '6', '60', 'Syntax Error')
     ]
