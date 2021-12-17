@@ -25,7 +25,11 @@ from user_interface.snake_charmer_ui import QuizInterface
 from user_interface.login import Login
 from database.sql_python_connection import get_question_count, open_connection_pool
 from tkinter import *
+<<<<<<< HEAD
 from database.create_database import *
+=======
+from create_database import *
+>>>>>>> ebe6136 (can now run the game just by running main.py)
 
 def create_question_bank():
     open_connection_pool()
@@ -63,6 +67,11 @@ if __name__ == "__main__":
     # print(f"Your final score was: {quiz.score}/{quiz.question_no}")
     # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
     # any hint to solve this
+<<<<<<< HEAD
 
     run_database()
     Login(Tk())
+=======
+    run_database()
+    Login()
+>>>>>>> ebe6136 (can now run the game just by running main.py)
