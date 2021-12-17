@@ -68,10 +68,14 @@ if __name__ == "__main__":
     # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
     # any hint to solve this
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     run_database()
     Login(Tk())
 =======
+=======
+
+>>>>>>> 9d2ee86 (can now run the game by running main.py - no need to run create_database first - please test)
     run_database()
     Login()
 >>>>>>> ebe6136 (can now run the game just by running main.py)

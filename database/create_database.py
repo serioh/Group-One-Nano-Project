@@ -175,6 +175,7 @@ def insert_choices():
     cur.close()
 
 
+
 def run_database():
     create_database()
     create_questions_table()
