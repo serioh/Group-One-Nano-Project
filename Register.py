@@ -81,6 +81,14 @@ class Register:
                              font=("Bebas Neue Regular", 18, "bold"), bg="white", fg="#7843E6", bd=0,)
         self.signup.place(x=20, y=410, width=290)
 
+        self.window.mainloop()
+
+    def redirect_window(self):
+        self.window.destroy()
+        from login import Login
+        window = Tk()
+        Login(window)
+
     def regclear(self):
 
         self.fname_txt.delete(0, END)
@@ -126,8 +134,9 @@ class Register:
                     db_connection.commit()
                     db_connection.close()
 
-                    messagebox.showinfo("Success", "Register Successful: Please restart the game to play.", parent=self.window)
+                    messagebox.showinfo("Success", "Register Successful", parent=self.window)
                     self.regclear()
+                    self.redirect_window()
 
 
 

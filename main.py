@@ -65,4 +65,4 @@ if __name__ == "__main__":
     # any hint to solve this
 
     run_database()
-    Login()
+    Login(Tk())
