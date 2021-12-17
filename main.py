@@ -43,7 +43,11 @@ def run():
     quiz = SnakeBrain(question_bank)
     quiz_ui = QuizInterface(quiz)
     print("You've completed the quiz")
-    print(f"Your final score was: {quiz.score}/{quiz.question_no}")
+    if quiz.question_no == 10:
+        number = 10
+    else:
+        number = quiz.question_no - 1
+    print(f"Your final score was: {quiz.score}/{number}")
 
     return quiz_ui
 
