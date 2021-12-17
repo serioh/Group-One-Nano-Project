@@ -126,7 +126,7 @@ class Register:
                     db_connection.commit()
                     db_connection.close()
 
-                    messagebox.showinfo("Success", "Register Successful", parent=self.window)
+                    messagebox.showinfo("Success", "Register Successful: Please restart the game to play.", parent=self.window)
                     self.regclear()
 
 
