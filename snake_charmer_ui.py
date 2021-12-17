@@ -119,7 +119,7 @@ class QuizInterface:
 
         # Check to see if the answer is correct
         if self.quiz.check_answer(self.user_answer.get()):
-            self.feedback["fg"] = "#C000000"
+            self.feedback["fg"] = "#000000"
             self.feedback["text"] = "That's correct!"
 
         else:
