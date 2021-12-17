@@ -14,7 +14,7 @@ def create_database():
     )
 
     cur = my_db.cursor()
-    cur.execute("CREATE DATABASE nano_degree_game_1")
+    cur.execute("CREATE DATABASE IF NOT EXISTS nano_degree_game_1")
 
     cur.close()
 
@@ -29,7 +29,7 @@ def create_questions_table():
     )
 
     cur = my_db.cursor()
-    cur.execute(f"""CREATE TABLE `Questions` (
+    cur.execute(f"""CREATE TABLE IF NOT EXISTS`Questions` (
                 `Q_Number` INTEGER NOT NULL,
                 `Question` VARCHAR(300) NOT NULL,
                 `Topic` VARCHAR(300) NOT NULL,
@@ -51,7 +51,7 @@ def create_multiple_choice_table():
     )
 
     cur = my_db.cursor()
-    cur.execute(f"""CREATE TABLE `Multiple_choice` (
+    cur.execute(f"""CREATE TABLE IF NOT EXISTS`Multiple_choice` (
                 `Q_Number` INTEGER NOT NULL,
                 `Incorrect_answer_1` VARCHAR(300) NOT NULL,
                 `Incorrect_answer_2` VARCHAR(300) NOT NULL,
@@ -91,7 +91,7 @@ def insert_questions():
     )
 
     cur = my_db.cursor()
-    query = """INSERT INTO questions (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
+    query = """INSERT IGNORE INTO questions (`Q_Number`, `Question`, `Topic`, `Difficulty_Level`, `Answer`, `Multiple_Choice`)
                 VALUES (%s, %s, %s, %s, %s, %s)"""
     val = [
         (1, 'What are the three numeric types in Python?', 'Numbers', 1, "Integers (int), Floats (float) and Complex Numbers (complex)", 1),
@@ -138,7 +138,7 @@ def insert_choices():
     )
 
     cur = my_db.cursor()
-    query = """INSERT INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
+    query = """INSERT IGNORE INTO Multiple_Choice (Q_Number, Incorrect_answer_1, Incorrect_answer_2, Incorrect_answer_3)
                 VALUES (%s, %s, %s, %s)"""
 
     val = [
@@ -175,9 +175,10 @@ def insert_choices():
     cur.close()
 
 
-create_database()
-create_questions_table()
-create_multiple_choice_table()
-insert_questions()
-insert_choices()
-create_registration_table()
+def run_database():
+    create_database()
+    create_questions_table()
+    create_multiple_choice_table()
+    insert_questions()
+    insert_choices()
+    create_registration_table()
