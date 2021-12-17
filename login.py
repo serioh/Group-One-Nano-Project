@@ -7,9 +7,9 @@ from sql_python_connection import _connect_to_db
 
 class Login:
 
-    def __init__(self):
+    def __init__(self, window):
         # initialise a variable window which would be used to create a tinker object
-        self.window = Tk()
+        self.window = window
         # set the title of the window
         self.window.title("Snake Charmer Login")
         # set the size
