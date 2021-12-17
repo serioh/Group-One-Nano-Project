@@ -63,5 +63,6 @@ if __name__ == "__main__":
     # print(f"Your final score was: {quiz.score}/{quiz.question_no}")
     # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
     # any hint to solve this
+
     run_database()
     Login()
