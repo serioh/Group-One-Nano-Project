@@ -14,9 +14,6 @@ Click on register, and after registration, close and run the main file again.
 
 Go to the login, enter your details, and the game will pop up.
 
-CURRENTLY NOT WORKING: 
-- "Forgot Password"
-
 Info on other files:
 
 - *sql_python_connection.py* - This is our SQL/Python Connection
