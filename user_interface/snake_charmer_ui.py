@@ -121,11 +121,7 @@ class QuizInterface:
 
         # Check to see if the answer is correct
         if self.quiz.check_answer(self.user_answer.get()):
-<<<<<<< HEAD:user_interface/snake_charmer_ui.py
             self.feedback["fg"] = "#000000"
-=======
-            self.feedback["fg"] = "#C000000"
->>>>>>> cf9d1d2 (changed that's correct to black):snake_charmer_ui.py
             self.feedback["text"] = "That's correct!"
 
         else:
