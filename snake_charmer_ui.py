@@ -49,7 +49,7 @@ class QuizInterface:
 
         # To show whether the answer is correct or wrong
         self.feedback = Label(self.frame_input, pady=10, font=("Bebas Neue Regular", 15, "bold"))
-        self.feedback.place(anchor=SE, relx=0.95, rely=0.98)
+        self.feedback.place(anchor=SE, relx=0.95, rely=0.99)
 
         # Next and Quit Button
         self.buttons()
