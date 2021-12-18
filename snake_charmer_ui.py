@@ -36,7 +36,7 @@ class QuizInterface:
         self.canvas1.pack()
         self.question_text = self.canvas1.create_text(
             400, 100, text="Question here", width=800, fill=THEME_COLOR,
-            font=('Bebas Neue Regular', 20, 'bold'))  # Feel free to change the font and italics
+            font=('Arial', 20, 'bold'))  # Feel free to change the font and italics
         #Display Question
         self.display_question()
 
@@ -48,7 +48,7 @@ class QuizInterface:
         self.display_options()
 
         # To show whether the answer is correct or wrong
-        self.feedback = Label(self.frame_input, pady=10, font=("Bebas Neue Regular", 15, "bold"))
+        self.feedback = Label(self.frame_input, pady=10, font=("Arial", 15, "bold"))
         self.feedback.place(anchor=SE, relx=0.95, rely=0.99)
 
         # Next and Quit Button
@@ -81,7 +81,7 @@ class QuizInterface:
                 text="",
                 variable=self.user_answer,
                 value='',
-                font=("Bebas Neue Regular", 14)
+                font=("Arial", 14)
             )
 
             # adding the button to the list
@@ -150,7 +150,7 @@ class QuizInterface:
             width=10,
             bg="white",
             fg="#7843E6",
-            font=("Bebas Neue Regular", 16, "bold")
+            font=("Arial", 16, "bold")
         )
 
         # placing the Next button on the screen
@@ -163,7 +163,7 @@ class QuizInterface:
             width=5,
             bg="gray",  # Dark grey
             fg="black",
-            font=("Bebas Neue Regular", 16, "bold")
+            font=("Arial", 16, "bold")
         )
 
         # Quit button placement on screen
