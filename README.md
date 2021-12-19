@@ -20,3 +20,6 @@ Info on other files:
 - *question.py* - This is the file that selects the questions and presents them
 - *snake_brain.py* - This is our quiz brain mainframe!
 - *snake_charmer_ui.py* - This is our Tkinter UI in all of its attractive glory
+
+Info on testing:
+If you want to run the unit tests, type in "pytest" into your terminal.

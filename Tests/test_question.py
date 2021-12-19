@@ -12,9 +12,9 @@ class TestQuestion:
         assert example_question.choices == None
         assert example_question.correct == None
     
-    @patch('sql_python_connection.get_question')
-    @patch('sql_python_connection.get_correct_answer')
-    @patch('sql_python_connection.get_incorrect_answers')
+    @patch('database.sql_python_connection.get_question')
+    @patch('database.sql_python_connection.get_correct_answer')
+    @patch('database.sql_python_connection.get_incorrect_answers')
     def test_populate_question(self, mock_get_question, mock_get_correct_answer, mock_get_incorrect_answers):
         mock_get_question.returnvalue = MagicMock("What are the three numeric types in Python?")
         mock_get_correct_answer.returnvalue = MagicMock("Integers (int), Floats (float) and Complex Numbers (complex)")
