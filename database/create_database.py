@@ -146,7 +146,7 @@ def insert_choices():
         (2, 'ice_cream = ["ice_cream = "vanilla", "strawberry", "pistachio", "chocolate"]', 'ice_cream = {"vanilla", "strawberry", "pistachio", "chocolate"}', 'ice_cream = ("vanilla", "strawberry", "pistachio", "chocolate")'),
         (3, '.addition()', '.plus()', '.addon()'),
         (4, 'cake = ["flavor": "coconut", "color": "white", "type": "layer cake"]', 'cake = {"flavor", "coconut", "color", "white", "type", "layer cake"}', 'cake = ("flavor": "coconut", "color": "white", "type": "layer cake")'),
-        (5, 'A tuple is a collection which is unchangeable and unordered.', 'A tuple is a collection which is changeable and ordered.', 'A tuple is a collection which is changeable and can be ordered or unordered, depending on how it is used.'),
+        (5, 'A tuple is a collection which is unchangeable and unordered.', 'A tuple is a collection which is changeable and ordered.', 'A tuple is a collection which is changeable and can be ordered or unordered.'),
         (6, 'print(f"This is {word}")', 'print("This is {}".format(word))', 'print("This is " + word)'),
         (7, '2.5', '3', '1'),
         (8, 'Exponents', 'Multiplication', 'Division'),
