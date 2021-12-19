@@ -26,3 +26,5 @@ database - Containing config.py, create_database.py, create_database.sql and sql
 Tests - Containing init.py, test_main.py, test_question.py, test_snake_brain.py, test_sql_python_connection.py, this contains all of our test files for the game. If you want to run the unit tests, type in "pytest" into your terminal.
 
 user_interface - Containing our background images, login.py, register.py and snake_charmer_ui.py, this is our Tkinter UI in all of its attractive glory.
+
+![alt text](https://raw.githubusercontent.com/serioh/Group-One-Nano-Project/doreen_final_tweaks/Readme/How_To_Play.png?raw=true)
