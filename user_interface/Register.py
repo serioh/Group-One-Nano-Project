@@ -1,9 +1,12 @@
 from tkinter import *
-from tkinter import ttk, messagebox
+from tkinter import messagebox
 import mysql.connector
-#from login import Login
-from PIL import ImageTk, Image, ImageFont
-from config import USER, PASSWORD, HOST
+from PIL import ImageTk, Image
+from pathlib import Path
+from database.config import USER, PASSWORD, HOST
+
+bkgroundimage_signup = Path.cwd() / "user_interface" / "bkgroundimage_signup.jpeg"
+
 
 class DbConnectionError(Exception):
     pass
@@ -34,52 +37,60 @@ class Register:
         # set background image
         canvas = Canvas(frame, height=700, width=1366)
         canvas.pack()
-        image = Image.open("bkgroundimage_signup.jpeg")
+        image = Image.open(bkgroundimage_signup)
         canvas.image = ImageTk.PhotoImage(image.resize((1366, 700), Image.ANTIALIAS))
         canvas.create_image(0, 0, image=canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe
         frame_input = Frame(self.window, bg='white')
         frame_input.place(x=500, y=130, height=450, width=350)
         # styling of the signup header, fg text color, bg
-        signup_header_label = Label(frame_input, text="Create an account ", font=("Bebas Neue Regular", 24, "bold"), fg="black", bg="white")
+        signup_header_label = Label(frame_input, text="Create an account ", font=("Arial", 24, "bold"), fg="black", bg="white")
         signup_header_label.place(x=35, y=10)
-        f_name = Label(frame_input, text="First name", font=("Bebas Neue Regular", 20, "bold"),fg='black', bg="white")
+        f_name = Label(frame_input, text="First name", font=("Arial", 20, "bold"),fg='black', bg="white")
         f_name.place(x=20, y=60)
         # the input box
-        self.fname_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.fname_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6')
         # place to show in window
         self.fname_txt.place(x=20, y=90, width=290, height=35)
         # styling of the input header, fg text color, bg
-        l_name = Label(frame_input, text="Last name", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
+        l_name = Label(frame_input, text="Last name", font=("Arial", 20, "bold"), fg='black', bg='white')
         l_name.place(x=20, y=130)
         # the input box
-        self.lname_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.lname_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6')
         # place to show in window
         self.lname_txt.place(x=20, y=160, width=290, height=35)
         # styling of the input header, fg text color, bg
-        email = Label(frame_input, text="Email", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
+        email = Label(frame_input, text="Email", font=("Arial", 20, "bold"), fg='black', bg='white')
         email.place(x=20, y=200)
         # the input box
-        self.email_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.email_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6')
         # place to show in window
         self.email_txt.place(x=20, y=230, width=290, height=35)
         # styling of the input header, fg text color, bg
-        password = Label(frame_input, text="New password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
+        password = Label(frame_input, text="New password", font=("Arial", 20, "bold"), fg='black', bg='white')
         password.place(x=20, y=270)
         # the input box
-        self.password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
+        self.password_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         # place to show in window
         self.password_txt.place(x=20, y=300, width=290, height=35)
         # styling of the input header, fg text color, bg
-        confirm_password = Label(frame_input, text="Confirm password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
+        confirm_password = Label(frame_input, text="Confirm password", font=("Arial", 20, "bold"), fg='black', bg='white')
         confirm_password.place(x=20, y=340)
         # the input box
-        self.confirm_password_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
+        self.confirm_password_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         # place to show in window
         self.confirm_password_txt.place(x=20, y=370, width=290, height=35)
         self.signup = Button(frame_input, text="Sign Up", command=self.signup, cursor="hand2",
-                             font=("Bebas Neue Regular", 18, "bold"), bg="white", fg="#7843E6", bd=0,)
+                             font=("Arial", 18, "bold"), bg="white", fg="#7843E6", bd=0,)
         self.signup.place(x=20, y=410, width=290)
+
+        self.window.mainloop()
+
+    def redirect_window(self):
+        self.window.destroy()
+        from user_interface.login import Login
+        window = Tk()
+        Login(window)
 
     def regclear(self):
 
@@ -126,8 +137,9 @@ class Register:
                     db_connection.commit()
                     db_connection.close()
 
-                    messagebox.showinfo("Success", "Register Successful: Please restart the game to play.", parent=self.window)
+                    messagebox.showinfo("Success", "Register Successful", parent=self.window)
                     self.regclear()
+                    self.redirect_window()
 
 
 

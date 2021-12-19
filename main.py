@@ -19,12 +19,13 @@ class Test (create an instance every time you start a new test)
 
 """
 import random
-from question import Question
-from snake_brain import SnakeBrain
-from snake_charmer_ui import QuizInterface
-from login import Login
-from sql_python_connection import get_question_count, open_connection_pool
+from backend.question import Question
+from backend.snake_brain import SnakeBrain
+from user_interface.snake_charmer_ui import QuizInterface
+from user_interface.login import Login
+from database.sql_python_connection import get_question_count, open_connection_pool
 from tkinter import *
+from database.create_database import *
 
 def create_question_bank():
     open_connection_pool()
@@ -62,4 +63,6 @@ if __name__ == "__main__":
     # print(f"Your final score was: {quiz.score}/{quiz.question_no}")
     # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
     # any hint to solve this
-    Login()
+
+    run_database()
+    Login(Tk())

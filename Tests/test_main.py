@@ -1,16 +1,15 @@
 import random
-from typing import List
 
 from main import create_question_bank
 from unittest.mock import MagicMock, patch
-from question import Question
+from backend.question import Question
 
 
 
 
 class TestMain:
 
-    @patch('sql_python_connection.get_question_count')
+    @patch('database.sql_python_connection.get_question_count')
     def test_create_question_bank(self, mock_get_question_count):
         mock_get_question_count.returnvalue = MagicMock(26)
         # random.seed(1), numbers == [5, 19, 3, 9, 4, 16, 15, 21, 13, 7]

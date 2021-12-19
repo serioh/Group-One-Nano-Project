@@ -1,10 +1,12 @@
-from tkinter import Tk, Canvas, StringVar, Label, Radiobutton, Button, messagebox
+from tkinter import messagebox
 from tkinter import *
-# presumably the above could just be written from tkinter import *
-from snake_brain import SnakeBrain
-from PIL import ImageTk, Image, ImageFont
+from backend.snake_brain import SnakeBrain
+from PIL import ImageTk, Image
+from pathlib import Path
 
 THEME_COLOR = "#7843E6"  # A "Purple" to go with our theme
+
+bkgroundimage_game = Path.cwd() / "user_interface" / "bkgroundimage_game.jpeg"
 
 
 class QuizInterface:
@@ -26,7 +28,7 @@ class QuizInterface:
         # set background image
         self.canvas = Canvas(self.frame_general, height=800, width=1366)
         self.canvas.pack()
-        self.image = Image.open("bkgroundimage_game.jpeg")
+        self.image = Image.open(bkgroundimage_game)
         self.canvas.image = ImageTk.PhotoImage(self.image.resize((1366, 800), Image.ANTIALIAS))
         self.canvas.create_image(0, 0, image=self.canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe
@@ -36,7 +38,7 @@ class QuizInterface:
         self.canvas1.pack()
         self.question_text = self.canvas1.create_text(
             400, 100, text="Question here", width=800, fill=THEME_COLOR,
-            font=('Bebas Neue Regular', 20, 'bold'))  # Feel free to change the font and italics
+            font=('Arial', 20, 'bold'))  # Feel free to change the font and italics
         #Display Question
         self.display_question()
 
@@ -48,7 +50,7 @@ class QuizInterface:
         self.display_options()
 
         # To show whether the answer is correct or wrong
-        self.feedback = Label(self.frame_input, pady=10, font=("Bebas Neue Regular", 15, "bold"))
+        self.feedback = Label(self.frame_input, pady=10, font=("Arial", 15, "bold"))
         self.feedback.place(anchor=SE, relx=0.95, rely=0.99)
 
         # Next and Quit Button
@@ -81,7 +83,7 @@ class QuizInterface:
                 text="",
                 variable=self.user_answer,
                 value='',
-                font=("Bebas Neue Regular", 14)
+                font=("Arial", 14)
             )
 
             # adding the button to the list
@@ -119,7 +121,7 @@ class QuizInterface:
 
         # Check to see if the answer is correct
         if self.quiz.check_answer(self.user_answer.get()):
-            self.feedback["fg"] = "white"
+            self.feedback["fg"] = "#000000"
             self.feedback["text"] = "That's correct!"
 
         else:
@@ -150,7 +152,7 @@ class QuizInterface:
             width=10,
             bg="white",
             fg="#7843E6",
-            font=("Bebas Neue Regular", 16, "bold")
+            font=("Arial", 16, "bold")
         )
 
         # placing the Next button on the screen
@@ -163,7 +165,7 @@ class QuizInterface:
             width=5,
             bg="gray",  # Dark grey
             fg="black",
-            font=("Bebas Neue Regular", 16, "bold")
+            font=("Arial", 16, "bold")
         )
 
         # Quit button placement on screen

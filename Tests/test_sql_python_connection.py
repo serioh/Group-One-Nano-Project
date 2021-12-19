@@ -1,6 +1,7 @@
-from sql_python_connection import get_correct_answer, get_incorrect_answers, get_question, get_question_count
+from database.sql_python_connection import get_correct_answer, get_incorrect_answers, get_question, get_question_count, open_connection_pool
 
 class TestSQLPythonConnection:
+    open_connection_pool()
 
     def test_get_question(self):
         question = get_question(1)
