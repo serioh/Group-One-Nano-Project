@@ -1,8 +1,8 @@
-from tkinter import Tk, Canvas, StringVar, Label, Radiobutton, Button, messagebox
+from tkinter import messagebox
 from tkinter import *
 # presumably the above could just be written from tkinter import *
-from snake_brain import SnakeBrain
-from PIL import ImageTk, Image, ImageFont
+from backend.snake_brain import SnakeBrain
+from PIL import ImageTk, Image
 
 THEME_COLOR = "#7843E6"  # A "Purple" to go with our theme
 
@@ -26,7 +26,7 @@ class QuizInterface:
         # set background image
         self.canvas = Canvas(self.frame_general, height=800, width=1366)
         self.canvas.pack()
-        self.image = Image.open("bkgroundimage_game.jpeg")
+        self.image = Image.open("user_interface\\bkgroundimage_game.jpeg")
         self.canvas.image = ImageTk.PhotoImage(self.image.resize((1366, 800), Image.ANTIALIAS))
         self.canvas.create_image(0, 0, image=self.canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe

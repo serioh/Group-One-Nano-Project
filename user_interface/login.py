@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-from PIL import ImageTk, Image, ImageFont
-from config import USER, PASSWORD, HOST
-from sql_python_connection import _connect_to_db
+from PIL import ImageTk, Image
+from database.sql_python_connection import _connect_to_db
 
 
 class Login:
@@ -31,7 +30,7 @@ class Login:
         # set background image
         canvas = Canvas(Frame_login, height=700, width=1366)
         canvas.pack()
-        image = Image.open("bkgroundimage.jpeg")
+        image = Image.open("user_interface\\bkgroundimage.jpeg")
         canvas.image = ImageTk.PhotoImage(image.resize((1366, 700), Image.ANTIALIAS))
         canvas.create_image(0, 0, image=canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe

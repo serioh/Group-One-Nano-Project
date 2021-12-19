@@ -1,9 +1,8 @@
 import random
-from typing import List
 
 from main import create_question_bank
 from unittest.mock import MagicMock, patch
-from question import Question
+from backend.question import Question
 
 
 

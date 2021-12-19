@@ -1,6 +1,5 @@
 import mysql.connector
-from config import USER, PASSWORD, HOST
-from pprint import pp
+from database.config import USER, PASSWORD, HOST
 
 
 class DbConnectionError(Exception):

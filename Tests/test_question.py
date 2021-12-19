@@ -1,6 +1,6 @@
 import random
 
-from question import Question
+from backend.question import Question
 from unittest.mock import MagicMock, patch
 
 class TestQuestion:
