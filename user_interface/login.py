@@ -105,7 +105,7 @@ class Login:
 
     def redirect_window(self):
         self.window.destroy()
-        from Register import Register
+        from user_interface.Register import Register
         window = Tk()
         obj = Register(window)
         window.mainloop()
