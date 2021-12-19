@@ -38,28 +38,28 @@ class Login:
         frame_input = Frame(self.window, bg='white')
         frame_input.place(x=500, y=130, height=450, width=350)
         # styling of the login header, fg text color, bg
-        login_header_label = Label(frame_input, text="Login Here", font=('Bebas Neue Regular', 32, 'bold'), fg="black",
+        login_header_label = Label(frame_input, text="Login Here", font=('Arial', 32, 'bold'), fg="black",
                                    bg='white')
         # login_header_label.place(x=105, y=20)
         # login_header_label.place(relx=0.15, rely=0.05)
         login_header_label.place(anchor=N, relx=0.5, rely=0.05)
 
-        email_label = Label(frame_input, text="Email", font=("Bebas Neue Regular", 20, "bold"),
+        email_label = Label(frame_input, text="Email", font=("Arial", 20, "bold"),
                             fg='black', bg='white')
         email_label.place(x=30, y=95)
         # the input box
-        self.email_txt = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6')
+        self.email_txt = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6')
         # place to show in window
         self.email_txt.place(x=30, y=145, width=290, height=35)
 
-        pwd_label = Label(frame_input, text="Password", font=("Bebas Neue Regular", 20, "bold"), fg='black', bg='white')
+        pwd_label = Label(frame_input, text="Password", font=("Arial", 20, "bold"), fg='black', bg='white')
         pwd_label.place(x=30, y=195)
 
-        self.password = Entry(frame_input, font=("Bebas Neue Regular", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
+        self.password = Entry(frame_input, font=("Arial", 15, "bold"), bg='lightgray', fg='#7843E6', show='*')
         self.password.place(x=30, y=245, width=290, height=35)
 
         login_button = Button(frame_input, text="         LOGIN        ", command=self.login, cursor="hand2",
-                              font=("Bebas Neue Regular", 15), bg="white", fg="#7843E6", bd=0)
+                              font=("Arial", 15), bg="white", fg="#7843E6", bd=0)
         login_button.place(anchor=N, relx=0.5, rely=0.7)
 
         register_button = Button(frame_input, command=self.redirect_window, text="Not Registered? click here"
