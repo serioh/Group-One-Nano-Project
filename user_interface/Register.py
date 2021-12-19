@@ -3,7 +3,11 @@ from tkinter import messagebox
 import mysql.connector
 #from login import Login
 from PIL import ImageTk, Image
+from pathlib import Path
 from database.config import USER, PASSWORD, HOST
+
+bkgroundimage_signup = Path.cwd() / "user_interface" / "bkgroundimage_signup.jpeg"
+
 
 class DbConnectionError(Exception):
     pass
@@ -34,7 +38,7 @@ class Register:
         # set background image
         canvas = Canvas(frame, height=700, width=1366)
         canvas.pack()
-        image = Image.open("user_interface\\bkgroundimage_signup.jpeg")
+        image = Image.open(bkgroundimage_signup)
         canvas.image = ImageTk.PhotoImage(image.resize((1366, 700), Image.ANTIALIAS))
         canvas.create_image(0, 0, image=canvas.image, anchor='nw')
         # another frame to add buttons for user,email basically subframe
