@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import mysql.connector
-#from login import Login
 from PIL import ImageTk, Image
 from pathlib import Path
 from database.config import USER, PASSWORD, HOST
@@ -89,7 +88,7 @@ class Register:
 
     def redirect_window(self):
         self.window.destroy()
-        from login import Login
+        from user_interface.login import Login
         window = Tk()
         Login(window)
 
