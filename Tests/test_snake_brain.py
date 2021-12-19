@@ -1,7 +1,7 @@
 import random
 
 from main import create_question_bank
-from snake_brain import SnakeBrain
+from backend.snake_brain import SnakeBrain
 
 
 class TestSnakeBrain:

@@ -1,4 +1,4 @@
-from sql_python_connection import get_correct_answer, get_incorrect_answers, get_question, get_question_count
+from database.sql_python_connection import get_correct_answer, get_incorrect_answers, get_question, get_question_count
 
 class TestSQLPythonConnection:
 
