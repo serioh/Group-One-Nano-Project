@@ -27,4 +27,4 @@ Tests - Containing init.py, test_main.py, test_question.py, test_snake_brain.py,
 
 user_interface - Containing our background images, login.py, register.py and snake_charmer_ui.py, this is our Tkinter UI in all of its attractive glory.
 
-![alt text](https://raw.githubusercontent.com/serioh/Group-One-Nano-Project/doreen_final_tweaks/Readme/How_To_Play.png?raw=true)
+![alt text](https://raw.githubusercontent.com/serioh/Group-One-Nano-Project/main/game_instructions/How_To_Play.png?raw=true)
