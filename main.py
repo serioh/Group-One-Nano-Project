@@ -27,10 +27,11 @@ from database.sql_python_connection import get_question_count, open_connection_p
 from tkinter import *
 from database.create_database import *
 
+
 def create_question_bank():
     open_connection_pool()
     question_count = get_question_count()
-    question_numbers = random.sample(range(1, question_count+1), 10)
+    question_numbers = random.sample(range(1, question_count + 1), 10)
     question_bank = []
     for q in question_numbers:
         question = Question()
@@ -38,8 +39,9 @@ def create_question_bank():
         question_bank.append(question)
     return question_bank
 
-""" run adds all the functions in the game, and its being called in thSe login page"""
+
 def run():
+    """ A function to add all the functions in the game, and its being called in the login page"""
     question_bank = create_question_bank()
     quiz = SnakeBrain(question_bank)
     quiz_ui = QuizInterface(quiz)
@@ -52,17 +54,9 @@ def run():
 
     return quiz_ui
 
-if __name__ == "__main__":
-    # question_bank = create_question_bank()
-    # print(question_bank)
-    # quiz = SnakeBrain(question_bank)
-    #
-    # quiz_ui = QuizInterface(quiz)
-    #
-    # print("You've completed the quiz")
-    # print(f"Your final score was: {quiz.score}/{quiz.question_no}")
-    # main.loop going more than once, hence the error after the quiz is finished, would look into this or if you have
-    # any hint to solve this
 
+if __name__ == "__main__":
+    # for creation of db, tables, and inserting questions
     run_database()
+    # run the login
     Login(Tk())
